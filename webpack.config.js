@@ -1,10 +1,11 @@
 const webpack = require('webpack');
-const path = require('path');
 
 module.exports = {
-    entry: [
-        './frontend/index'
-    ],
+    entry: './reactApp/app.js',
+    output: {
+        path: __dirname + '/build',
+        filename: 'app.bundle.js'
+    },
     module: {
         rules: [
             { test: /\.js?$/, loader: 'babel-loader', exclude: /node_modules/ },
@@ -14,14 +15,9 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.scss']
     },
-    output: {
-        path: path.join(__dirname, '/public'),
-        publicPath: '/',
-        filename: 'bundle.js'
-    },
     devtool: 'cheap-eval-source-map',
     devServer: {
-        contentBase: './public',
+        contentBase: './build/index.dev.html',
         hot: true
     },
     plugins: [

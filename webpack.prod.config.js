@@ -2,9 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-    entry: [
-        './frontend/index'
-    ],
+    entry: './reactApp/app.js',
     module: {
         rules: [
             { test: /\.js?$/, loader: 'babel-loader', exclude: /node_modules/ },
@@ -15,7 +13,7 @@ module.exports = {
         extensions: ['.js', '.scss']
     },
     output: {
-        path: path.join(__dirname, '/public'),
+        path: path.join(__dirname, '/build'),
         publicPath: '/',
         filename: 'bundle.js'
     },
