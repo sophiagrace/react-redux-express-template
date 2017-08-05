@@ -70,7 +70,6 @@ function streamingMicRecognize (/*encoding, sampleRateHertz, languageCode*/) {
   // [END speech_streaming_mic_recognize]
 
 
-
   /* TO BE PUT IN:
   //AMANDA CHANGE - STOP AT A SILENCE
         process.stdout.write(
