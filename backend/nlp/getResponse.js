@@ -29,6 +29,7 @@ function generateQueryString(query, id) {
 //  - Description: Send an API call to API.AI
 //    using the query string and slackId specified
 function sendQuery(query, widgetID) {
+  console.log('in get api response');
   return api_ai.get(generateQueryString(query, widgetID))
 }
 

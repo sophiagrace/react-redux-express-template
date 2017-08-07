@@ -4,7 +4,8 @@
 
 
 // Exported Function
-function processRequest () {
+function processRequest (data) {
+  console.log('in process request');
 
 }
 
