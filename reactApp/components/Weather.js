@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 import axios from 'axios';
 import weatherIcon from '../helperFunctions/weatherIcon.js';
 
@@ -52,4 +52,4 @@ class Weather extends React.Component {
   }
 }
 
-export default Weather;
+export default Weather;*/

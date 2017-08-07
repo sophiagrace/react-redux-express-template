@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../build/styles/container.scss';
+import '../../build/styles/container.css';
 
 class responseDiv extends React.Component {
   constructor(props) {

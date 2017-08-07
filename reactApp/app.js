@@ -1,13 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import WidgetContainer from './components/WidgetContainer';
+import io from 'socket.io-client';
 const socket = io('http://localhost:3000');
-/* This can check if your electron app can communicate with your backend */
-// fetch('http://localhost:3000')
-// .then(resp => resp.text())
-// .then(text => console.log(text))
-// .catch(err => {throw err})
-/* ********************** */
+
 
 class Container extends React.Component {
   constructor() {
@@ -27,13 +23,15 @@ class Container extends React.Component {
 
   componentDidMount(){
 
+	console.log("this app was mounted.")
+
     socket.on('connect', function(){
       console.log("connected");
     });
 
     socket.on('active', function(){
       this.setState({
-        isActive: true;
+        isActive: true
       });
     });
 

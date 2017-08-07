@@ -11,15 +11,11 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, './build/index.html'));
 });
 
-// // CURRENTLY THIS IS WHERE WE CAN START LISTENING FOR ONE COMMAND
-// const { streamingMicRecognize } = require('./stt/listen');
-// streamingMicRecognize();
-
 /* the following will change for different computers. */
 
-const py = spawn('python', ['-u', '/Users/yashvardhannevatia/horizons/web-smart-mirror/rpi-arm-raspbian-8.0-1.2.0/demo.py'],{
+const py = spawn('python', ['-u', 'home/pi/Public/web-smart-mirror/rpi-arm-raspbian-8.0-1.2.0/demo.py'],{
   stdio: ['pipe', 'pipe', 'ignore'],
-  cwd: '/Users/yashvardhannevatia/horizons/web-smart-mirror/rpi-arm-raspbian-8.0-1.2.0'
+  cwd: '/home/pi/Public/web-smart-mirror/rpi-arm-raspbian-8.0-1.2.0'
 })
 
 /* the following will change for different computers. */
@@ -31,7 +27,8 @@ const rl = readline.createInterface({
 });
 
 
-ion.on('connection', function(socket){
+io.on('connection', function(socket){
+	console.log("connected to sockets");
 
   rl.on('line', hotword => {
     console.log("hotword detected", hotword);
