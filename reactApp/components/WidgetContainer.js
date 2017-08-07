@@ -7,12 +7,13 @@ import Time from './Time';
 import Weather from './Weather';
 import Radio from './Radio';
 import News from './News';
+import Response from './responseDiv';
 
 class WidgetContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+        hasResponse: true
     };
   }
 
@@ -24,7 +25,7 @@ class WidgetContainer extends React.Component {
      // in future, only show three components,
      // for now, test out widgets here!
     return(
-      <div>
+      <div className="outerDiv">
            <div className={this.props.isActive ? 'isActiveDiv' : 'isStandbyDiv'}>
                <ReactCSSTransitionGroup transitionName = "example"
                  transitionAppear = {true} transitionAppearTimeout = {2000}
@@ -34,10 +35,18 @@ class WidgetContainer extends React.Component {
                  <Weather weatherState={this.props.isActive}/>
               </ReactCSSTransitionGroup>
           </div>
-          <div className={this.props.isActive ? 'widgetsActive' : 'widgetsStandby'}>
-              <Radio />
-              <News />
+          <div className={this.props.isActive ? 'responseDiv' : 'widgetsStandby'}>
+              { this.state.hasResponse && <div className="rDiv"><Response /></div> }
           </div>
+          <div className={this.props.isActive ? 'widgetsActive' : 'widgetsStandby'}>
+              <ReactCSSTransitionGroup transitionName = "example"
+                transitionAppear = {true} transitionAppearTimeout = {2000}
+                transitionEnter = {false} transitionLeave = {false}>
+                {this.props.widget === 'radio' ? <Radio /> : <div></div>}
+                {this.props.widget === 'news' ? <News /> : <div></div>}
+             </ReactCSSTransitionGroup>
+          </div>
+
     </div>
     );
   }
