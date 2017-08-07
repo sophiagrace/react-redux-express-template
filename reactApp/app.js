@@ -33,7 +33,7 @@ class Container extends React.Component {
 
     socket.on('active', function(){
       this.setState({
-        isActive: true;
+        isActive: true
       });
     });
 

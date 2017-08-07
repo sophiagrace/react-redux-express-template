@@ -31,7 +31,7 @@ const rl = readline.createInterface({
 });
 
 
-ion.on('connection', function(socket){
+io.on('connection', function(socket){
 
   rl.on('line', hotword => {
     console.log("hotword detected", hotword);
