@@ -6,7 +6,7 @@ class Container extends React.Component {
   constructor() {
     super();
     this.state = {
-      isActive: true
+      isActive: false
     };
     this.isMirrorActive = this.isMirrorActive.bind(this);
   }
