@@ -22,8 +22,9 @@ class News extends React.Component {
         this.setState({allSources: newSources});
       })
       .then(() => {
-        console.log('here', this.state.allSources);
-        this.selectSource('BBC News');
+        console.log('here!!!!!!', this.state.allSources);
+        console.log('wanted', 'The Wall Street Journal');
+        this.selectSource('The Wall Street Journal');
       })
       .catch(console.log);
 
@@ -35,9 +36,8 @@ class News extends React.Component {
   selectSource (sourceName) {
     this.state.allSources.map(source => {
       if (source.name.toLowerCase().startsWith(sourceName.toLowerCase())) {
-        this.setState({currentSource: source});
-        console.log('current source', this.state.currentSource
-        );
+        this.setState({currentSource: source})
+        console.log('current source', this.state.currentSource);
       }
     });
 
