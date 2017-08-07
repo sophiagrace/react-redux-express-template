@@ -1,7 +1,11 @@
-// FILE THAT CONTAINS THE STREAMING MIC RECOGNIZE FUNCTION
-// WHEN CALLED, GOOGLE SPEECH STARTS INTERPRETING MIC AUDIO AND ENDS
-// WHEN THERE IS A SILENCE; RETURNS THE TRASNCRIPTION OF AUDIO OR 0
+/* File that controls interaction with Google Speech STT */
 
+// Exported Function
+// streamingMicRecognize()
+//  - Param: none (can in future have to specify language, etc.)
+//  - Return: string (what the user said)
+//  - Description: Google speech starts listening to mic audio, stops listening
+//                 when there is a silence, and translates audio to text
 function streamingMicRecognize (/*encoding, sampleRateHertz, languageCode*/) {
   const fs = require('fs');
 
@@ -42,8 +46,8 @@ function streamingMicRecognize (/*encoding, sampleRateHertz, languageCode*/) {
           ? data.results[0].alternatives[0].transcript
           : 0;
       console.log(returnScript);
-        //STOP AT A SILENCE
-      console.log('DATA:', data.results);
+
+      //STOP AT A SILENCE
       if (data.results[0].isFinal) {
         record.stop();
         console.log('stopped listening');

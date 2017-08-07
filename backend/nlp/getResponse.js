@@ -1,3 +1,5 @@
+/* File that makes get request to API.AI with text */
+
 // NPM Imports
 const axios = require('axios');
 

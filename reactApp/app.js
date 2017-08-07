@@ -10,7 +10,7 @@ import WidgetContainer from './components/WidgetContainer';
 /* ********************** */
 
 class Container extends React.Component {
-  constructor() {
+  constructor () {
     super();
     this.state = {
       isActive: true
@@ -18,9 +18,17 @@ class Container extends React.Component {
     this.isMirrorActive = this.isMirrorActive.bind(this);
   }
 
-  isMirrorActive() {
+  componentDidMount () {
+    isMirrorActive();
+  }
+
+  isMirrorActive () {
      // function passed down to voice component to determine if
      // mirror is standby or active
+
+     // call snowboy python file code here
+
+     // this.setState({isActive: bool});
     return;
   }
 
