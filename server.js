@@ -16,10 +16,13 @@ app.get('/', function(req, res) {
 // streamingMicRecognize();
 
 /* the following will change for different computers. */
+const myFilePath = '/Users/amandahansen/SmartMirror/';
+const fp1 = myFilePath +'web-smart-mirror/rpi-arm-raspbian-8.0-1.2.0/demo.py';
+const fp2 = myFilePath + 'web-smart-mirror/rpi-arm-raspbian-8.0-1.2.0';
 
-const py = spawn('python', ['-u', '/Users/yashvardhannevatia/horizons/web-smart-mirror/rpi-arm-raspbian-8.0-1.2.0/demo.py'],{
+const py = spawn('python', ['-u', fp1],{
   stdio: ['pipe', 'pipe', 'ignore'],
-  cwd: '/Users/yashvardhannevatia/horizons/web-smart-mirror/rpi-arm-raspbian-8.0-1.2.0'
+  cwd: fp2
 })
 
 /* the following will change for different computers. */

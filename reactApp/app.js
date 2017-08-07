@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import WidgetContainer from './components/WidgetContainer';
+import io from 'socket.io-client';
 const socket = io('http://localhost:3000');
 /* This can check if your electron app can communicate with your backend */
 // fetch('http://localhost:3000')
@@ -13,8 +14,8 @@ class Container extends React.Component {
   constructor() {
     super();
     this.state = {
-      isActive: false,
-      widget: ""
+      isActive: true,
+      widget: "radio"
     };
     this.isMirrorActive = this.isMirrorActive.bind(this);
   }
