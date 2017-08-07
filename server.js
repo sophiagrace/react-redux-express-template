@@ -10,6 +10,15 @@ app.get('/', function(req, res) {
 // // CURRENTLY THIS IS WHERE WE CAN START LISTENING FOR ONE COMMAND
 // const { streamingMicRecognize } = require('./backend/stt/listen');
 // streamingMicRecognize();
+const { getCommand } = require('./backend/processHuman');
+
+getCommand('testwidget').then(respObj => {
+  console.log('finished get command');
+  console.log('got this info:', respObj);
+});
+
+
+
 
 app.listen(3000, function() {
     console.log('server running on port 3000!');

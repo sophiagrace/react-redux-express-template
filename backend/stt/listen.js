@@ -6,9 +6,8 @@
 //  - Return: string (what the user said)
 //  - Description: Google speech starts listening to mic audio, stops listening
 //                 when there is a silence, and translates audio to text
-function streamingMicRecognize (/*encoding, sampleRateHertz, languageCode*/) {
-  console.log('in streaming mic listen');
 
+function streamingMicRecognize (/*encoding, sampleRateHertz, languageCode*/) {
   return new Promise((resolve, reject) => {
     const fs = require('fs');
 

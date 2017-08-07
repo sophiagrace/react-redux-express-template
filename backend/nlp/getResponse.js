@@ -18,7 +18,6 @@ const api_ai = axios.create({
 // Local Helper Function
 // Generates the url to sent to API.AI
 function generateQueryString(query, id) {
-  console.log('got query string', query);
   return '/query?v=20150910&lang=en&sessionId=' + id + '&query=' + encodeURIComponent(query);
 }
 
@@ -29,7 +28,6 @@ function generateQueryString(query, id) {
 //  - Description: Send an API call to API.AI
 //    using the query string and slackId specified
 function sendQuery(query, widgetID) {
-  console.log('in get api response');
   return api_ai.get(generateQueryString(query, widgetID))
 }
 
