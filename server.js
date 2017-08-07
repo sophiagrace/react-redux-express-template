@@ -7,9 +7,9 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, './build/index.html'));
 });
 
-// // CURRENTLY THIS IS WHERE WE CAN START LISTENING FOR ONE COMMAND
-// const { streamingMicRecognize } = require('./stt/listen');
-// streamingMicRecognize();
+// CURRENTLY THIS IS WHERE WE CAN START LISTENING FOR ONE COMMAND
+const { streamingMicRecognize } = require('./backend/stt/listen');
+streamingMicRecognize();
 
 app.listen(3000, function() {
     console.log('server running on port 3000!');

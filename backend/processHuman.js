@@ -1,6 +1,6 @@
 /* File that integrates the three parts of the speech -> widgetText process */
 
-const { streamingMicRecognize } = require('./stt/listen');
+// const { streamingMicRecognize } = require('./stt/listen');
 const { sendQuery } = require('./nlp/getResponse');
 const { analyzeRequest } = require('./nlp/responseLogic');
 
