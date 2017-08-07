@@ -42,8 +42,8 @@ class WidgetContainer extends React.Component {
               <ReactCSSTransitionGroup transitionName = "example"
                 transitionAppear = {true} transitionAppearTimeout = {2000}
                 transitionEnter = {false} transitionLeave = {false}>
-                <Radio />
-                <News />
+                {this.props.widget === 'radio' ? <Radio /> : <div></div>}
+                {this.props.widget === 'news' ? <News /> : <div></div>}
              </ReactCSSTransitionGroup>
           </div>
 
