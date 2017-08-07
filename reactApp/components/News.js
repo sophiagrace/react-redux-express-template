@@ -22,10 +22,10 @@ class News extends React.Component {
         this.setState({allSources: newSources});
       })
       .then(() => {
-        console.log('here', this.state.allSources);
+        console.log('here!!', this.state.allSources);
         this.selectSource('BBC News');
       })
-      .catch(console.log);
+      .catch();
 
       // this.pinArticle("Trump 'pressed Mexico");
   }
