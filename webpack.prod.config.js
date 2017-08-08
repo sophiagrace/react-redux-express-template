@@ -1,11 +1,11 @@
-const webpack = require('webpack');
+ 	const webpack = require('webpack');
 
 module.exports = {
     entry: './reactApp/app.js',
     output: {
-        path: __dirname + '/build',
+        path: __dirname + '/public',
         filename: 'app.bundle.js',
-        publicPath: '/build'
+        publicPath: '/public'
     },
     module: {
         rules: [
@@ -14,11 +14,11 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: ['.js', '.scss']
+        extensions: ['.js']
     },
     devtool: 'cheap-eval-source-map',
     devServer: {
-        contentBase: './build/index.dev.html',
+        contentBase: './public/index.dev.html',
         hot: true
     },
     plugins: [

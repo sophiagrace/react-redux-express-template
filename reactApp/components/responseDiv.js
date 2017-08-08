@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../build/styles/container.css';
+
 
 class Response extends React.Component {
   constructor(props) {

@@ -3,22 +3,21 @@ const webpack = require('webpack');
 module.exports = {
     entry: './reactApp/app.js',
     output: {
-        path: __dirname + '/build',
+        path: __dirname + '/public',
         filename: 'app.bundle.js',
-        publicPath: '/build'
+        publicPath: '/public'
     },
     module: {
         rules: [
-            { test: /\.js?$/, loader: 'babel-loader', exclude: /node_modules/ },
-	    {test: /\.css$/, use: [ 'style-loader', 'css-loader' ] }
+            { test: /\.js?$/, loader: 'babel-loader', exclude: /node_modules/ }
         ],
     },
     resolve: {
-        extensions: ['.js', '.css']
+        extensions: ['.js']
     },
     devtool: 'cheap-eval-source-map',
     devServer: {
-        contentBase: './build/index.dev.html',
+        contentBase: './public/index.dev.html',
         hot: true
     },
     plugins: [

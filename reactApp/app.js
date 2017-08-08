@@ -25,17 +25,24 @@ class Container extends React.Component {
 	  
 	  var self =this;
 
-	console.log("this app was mounted.")
+	console.log("this app was mounted.");
 
     socket.on('connect', function(){
       console.log("connected");
     });
+
 
     socket.on('wakeup', function(){
 		console.log("wakeup");
 		self.setState({
 			isActive: true,
 		});
+	})
+
+    socket.on('active', function(){
+      this.setState({
+        isActive: true
+      });
     });
     
     socket.on('sleep', function(){
