@@ -8,7 +8,7 @@ const { analyzeRequest } = require('./nlp/responseLogic');
 // streamingMicRecognize();
 
 // Local Helper Functions
-function callGetCommand(widgetName) {
+function localGetCommand(widgetName) {
   console.log('reached 1');
   return streamingMicRecognize()
     .then( userRequest => {
@@ -34,28 +34,29 @@ function callGetCommand(widgetName) {
     });
 }
 
-// Exported Function
-// getCommand(widgetName)
-//  - Param:
-//  - Return:  object (keys: bool isFinished,  )
-//  - Description: called from Widget, runs three STT funcs, produces object response
-function getCommand (widgetName) {
-  console.log('reached {A}')
-  return callGetCommand(widgetName)
-    .then(respObj => {
-      console.log('reached {B}')
+// function getCommand(widgetName) {
+//   console.log('reached {A}')
+//   return localGetCommand(widgetName)
+//     .then(respObj => {
+//       console.log('reached {B}')
+//
+//       if (respObj.notFinished) {
+//         console.log('reached {C}', respObj)
+//
+//         //change text question response
+//         // this.setState({currentResponse: respObj.response})
+//         return getCommand(widgetName)
+//         // return setTimeout(() => {return getCommand(widgetName)}, 1000);
+//       } else {
+//         console.log('reached {D}')
+//         return respObj;
+//       }
+//     })
+//     .catch(err => {
+//       console.log('encountered error :(', err);
+//     })
+// }
 
-      if (respObj.notFinished) {
-        console.log('reached {C}')
-        return getCommand(widgetName);
-      }
 
-      console.log('reached {D}')
-      return respObj;
-    })
-    .catch(err => {
-      console.log('encountered error :(', err);
-    })
-}
 
-module.exports = { getCommand };
+module.exports = { localGetCommand };

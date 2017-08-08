@@ -1,5 +1,8 @@
 import React from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import axios from 'axios';
+
+// const { localGetCommand } = require('../../backend/processHuman'); // CHANGE FILE PATH
 
 // import all different widgets
 // in this file, control which widgets show
@@ -13,8 +16,22 @@ class WidgetContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        hasResponse: true
+        hasResponse: true,
+        currentResponse: ''
     };
+  }
+
+  componentDidMount() {
+    // callGetCommand('test-widget')
+    //   .then(() => {
+    //     console.log('finished');
+    //   })
+    console.log('component mounted');
+    axios.post('/stt', {widget: 'test'})
+    .then( resp => {
+      console.log('finished on the client side with', resp);
+    });
+
   }
 
   determineThreeWidgets() {
@@ -53,3 +70,13 @@ class WidgetContainer extends React.Component {
 }
 
 export default WidgetContainer;
+//
+// /* Local Helper Function */
+// // Exported Function
+// // getCommand(widgetName)
+// //  - Param:
+// //  - Return:  object (keys: bool isFinished,  )
+// //  - Description: called from Widget, runs three STT funcs, produces object response
+// function localGetCommand (widgetName) {
+//
+// }

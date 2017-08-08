@@ -4,24 +4,15 @@ const path = require('path');
 const server = require('http').Server(app);
 const io  = require('socket.io')(server);
 const spawn = require('child_process').spawn;
+
+const routes = require('./backend/routes');
+
 // Example route
 app.use(express.static(path.join(__dirname, '/build')));
 
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, './build/index.html'));
 });
-
-// // CURRENTLY THIS IS WHERE WE CAN START LISTENING FOR ONE COMMAND
-// const { streamingMicRecognize } = require('./backend/stt/listen');
-// streamingMicRecognize();
-const { getCommand } = require('./backend/processHuman');
-
-getCommand('testwidget').then(respObj => {
-  console.log('finished get command');
-  console.log('got this info:', respObj);
-});
-
-
 
 
 /* the following will change for different computers. */
@@ -56,7 +47,10 @@ io.on('connection', function(socket){
     }
   });
 
-})
+});
+
+// STT Routes
+app.use('/', routes);
 
 server.listen(3000, function() {
     console.log('server running on port 3000!');
