@@ -4,5 +4,4 @@ node_modules/
 package-lock.json
 *hot-update.js
 *hot-update.json
-build/
 public/app.bundle.js
