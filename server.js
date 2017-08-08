@@ -1,10 +1,6 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const server = require('http').Server(app);
-const io  = require('socket.io')(server);
-const spawn = require('child_process').spawn;
-
 const routes = require('./backend/routes');
 
 // Example route
@@ -14,40 +10,13 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, './build/index.html'));
 });
 
+// START SOCKET SERVER STUFF
+const server            = require('http').Server(app);
+const io                = require('socket.io')(server);
+const socketConfig = require ('./backend/sockets.js');
+socketConfig(io);
+// END SOCKET SERVER STUFF
 
-/* the following will change for different computers. */
-const myFilePath = '/Users/amandahansen/SmartMirror/';
-const fp1 = myFilePath +'web-smart-mirror/rpi-arm-raspbian-8.0-1.2.0/demo.py';
-const fp2 = myFilePath + 'web-smart-mirror/rpi-arm-raspbian-8.0-1.2.0';
-
-const py = spawn('python', ['-u', fp1],{
-  stdio: ['pipe', 'pipe', 'ignore'],
-  cwd: fp2
-})
-
-/* the following will change for different computers. */
-
-const readline = require('readline');
-const rl = readline.createInterface({
-  input: py.stdout,
-  output: 'ignore'
-});
-
-
-io.on('connection', function(socket){
-
-  rl.on('line', hotword => {
-    console.log("hotword detected", hotword);
-    if(hotword === 'snowboy'){
-      console.log("snowboy deteced");
-      socket.emit('active');
-    } else {
-      console.log("widget was heard");
-      socket.emit('widget', hotword);
-    }
-  });
-
-});
 
 // STT Routes
 app.use('/', routes);

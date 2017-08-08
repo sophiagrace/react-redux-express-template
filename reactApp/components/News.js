@@ -11,7 +11,8 @@ class News extends React.Component {
       allSources: [],
       currentSource: {},
       currentArticles: [],
-      image: ''
+      image: '',
+      socket: this.props.socket
     };
   }
 
@@ -28,6 +29,17 @@ class News extends React.Component {
       .catch(console.log);
 
       // this.pinArticle("Trump 'pressed Mexico");
+
+    // START SOCKETS STUFF
+    this.state.socket.join('NEWS')
+
+    this.state.socket.on('stt_finished', respObj => {
+      console.log('received stt finished', respObj);
+
+      // change state of news here from respObj params
+
+    });
+    // END SOCKETS STUFF
   }
 
   // function for user to select specific news source

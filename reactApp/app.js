@@ -56,7 +56,11 @@ class Container extends React.Component {
 
   render () {
     return (
-      <WidgetContainer isActive={this.state.isActive} widget={this.state.widget} className="card2"/>
+      <WidgetContainer isActive={this.state.isActive}
+        widget={this.state.widget}
+        className="card2"
+        socket={socket}
+      />
     );
   }
 }
