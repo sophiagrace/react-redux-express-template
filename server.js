@@ -13,7 +13,7 @@ app.get('/', function(req, res) {
 
 /* the following will change for different computers. */
 
-const py = spawn('python', ['-u', 'home/pi/Public/web-smart-mirror/rpi-arm-raspbian-8.0-1.2.0/demo.py'],{
+const py = spawn('python', ['-u', '/home/pi/Public/web-smart-mirror/rpi-arm-raspbian-8.0-1.2.0/demo.py'],{
   stdio: ['pipe', 'pipe', 'ignore'],
   cwd: '/home/pi/Public/web-smart-mirror/rpi-arm-raspbian-8.0-1.2.0'
 })
@@ -26,16 +26,28 @@ const rl = readline.createInterface({
   output: 'ignore'
 });
 
+rl.on('line', (input) => {
+	console.log("here");
+	console.log("this",input);
+});
+
+
+
 
 io.on('connection', function(socket){
 	console.log("connected to sockets");
-
+	console.log("listening");
   rl.on('line', hotword => {
     console.log("hotword detected", hotword);
-    if(hotword === 'snowboy'){
-      console.log("snowboy deteced");
-      socket.emit('active');
-    } else {
+    if(hotword === 'wakeup'){
+      console.log("wakeup");
+      socket.emit('wakeup');
+    } 
+    if(hotword === 'sleep'){
+	  console.log("sleep");
+	  socket.emit('sleep');
+	}
+    else {
       console.log("widget was heard");
       socket.emit('widget', hotword);
     }

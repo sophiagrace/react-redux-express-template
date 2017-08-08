@@ -16,20 +16,27 @@ def interrupt_callback():
     global interrupted
     return interrupted
 
+def wakeup():
+    print("wakeup")
+
+def sleep():
+    print("sleep")
+
 if len(sys.argv) != 3:
     print("Error: need to specify 2 model names")
     print("Usage: python demo.py 1st.model 2nd.model")
     sys.exit(-1)
 
-models = sys.argv[1:]
+models = ["/home/pi/Public/mirror/rpi-arm-raspbian-8.0-1.2.0/resources/wakeup.pmdl",
+             "/home/pi/Public/mirror/rpi-arm-raspbian-8.0-1.2.0/resources/sleep.pmdl"]
 
 # capture SIGINT signal, e.g., Ctrl+C
 signal.signal(signal.SIGINT, signal_handler)
 
 sensitivity = [0.5]*len(models)
 detector = snowboydecoder.HotwordDetector(models, sensitivity=sensitivity)
-callbacks = [lambda: snowboydecoder.play_audio_file(snowboydecoder.DETECT_DING),
-             lambda: snowboydecoder.play_audio_file(snowboydecoder.DETECT_DONG)]
+callbacks = [lambda: wakeup,
+             lambda: sleep]
 print('Listening... Press Ctrl+C to exit')
 
 # main loop

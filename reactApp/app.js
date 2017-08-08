@@ -22,6 +22,8 @@ class Container extends React.Component {
   }
 
   componentDidMount(){
+	  
+	  var self =this;
 
 	console.log("this app was mounted.")
 
@@ -29,14 +31,22 @@ class Container extends React.Component {
       console.log("connected");
     });
 
-    socket.on('active', function(){
-      this.setState({
-        isActive: true
-      });
+    socket.on('wakeup', function(){
+		console.log("wakeup");
+		self.setState({
+			isActive: true,
+		});
     });
+    
+    socket.on('sleep', function(){
+		console.log("sleep");
+		self.setState({
+			isActive: false,
+		})
+	}
 
     socket.on('widget', function(howtword){
-      this.setState({
+      self.setState({
         widget:hotword
       })
     })
@@ -45,7 +55,7 @@ class Container extends React.Component {
 
   render () {
     return (
-      <WidgetContainer isActive={this.state.isActive} widget={this.state.widget} className="card2"/>
+     <WidgetContainer isActive={this.state.isActive} widget={this.state.widget} className="card2"/>
     );
   }
 }
