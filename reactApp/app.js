@@ -43,7 +43,7 @@ class Container extends React.Component {
 		self.setState({
 			isActive: false,
 		})
-	}
+	});
 
     socket.on('widget', function(howtword){
       self.setState({

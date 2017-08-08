@@ -13,7 +13,7 @@ app.get('/', function(req, res) {
 
 /* the following will change for different computers. */
 
-const py = spawn('python', ['-u', '/home/pi/Public/web-smart-mirror/rpi-arm-raspbian-8.0-1.2.0/demo.py'],{
+const py = spawn('python', ['-u', '/home/pi/Public/web-smart-mirror/rpi-arm-raspbian-8.0-1.2.0/demo2.py'],{
   stdio: ['pipe', 'pipe', 'ignore'],
   cwd: '/home/pi/Public/web-smart-mirror/rpi-arm-raspbian-8.0-1.2.0'
 })
@@ -25,12 +25,6 @@ const rl = readline.createInterface({
   input: py.stdout,
   output: 'ignore'
 });
-
-rl.on('line', (input) => {
-	console.log("here");
-	console.log("this",input);
-});
-
 
 
 
