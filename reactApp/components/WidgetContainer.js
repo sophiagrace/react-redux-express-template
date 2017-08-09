@@ -7,12 +7,12 @@ import Time from './Time';
 import Weather from './Weather';
 import Radio from './Radio';
 import News from './News';
+import Uber from './Uber'
 
 class WidgetContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
     };
   }
 
@@ -29,10 +29,10 @@ class WidgetContainer extends React.Component {
                <ReactCSSTransitionGroup transitionName = "example"
                  transitionAppear = {true} transitionAppearTimeout = {2000}
                  transitionEnter = {false} transitionLeave = {false}>
-
                  <Time timeState={this.props.isActive}/>
                  <Weather weatherState={this.props.isActive}/>
               </ReactCSSTransitionGroup>
+              <Uber />
           </div>
           <div className={this.props.isActive ? 'widgetsActive' : 'widgetsStandby'}>
               <Radio />

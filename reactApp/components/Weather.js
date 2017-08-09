@@ -21,18 +21,17 @@ class Weather extends React.Component {
           current: (resp.data.main.temp-273.15).toFixed(0),
           icon: resp.data.weather[0].icon
         });
-        // console.log(this.state.icon);
       });
-    }, 1000)
+    }, 100000)
     });
   }
   componentWillUnmount() {
-    clearInterval(this.state.interval);
+    clearInterval(this.state.interval); 
     console.log('clearing');
   }
   render() {
     const icon = weatherIcon(this.state.icon);
-    console.log('ICON', icon);
+    console.log('ILCON', icon);
     return (
       <div className={this.props.weatherState ? 'isActiveWeather' : 'isStandbyWeather'}>
         <img src={icon} height="75" width="75"></img>
